@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Table(name = "tb_notification")
@@ -23,6 +25,9 @@ public class Notification implements Serializable {
 	private Instant moment;
 	private Boolean read;
 	private String route;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Notification() {
 	}
@@ -73,6 +78,14 @@ public class Notification implements Serializable {
 
 	public void setRoute(String route) {
 		this.route = route;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

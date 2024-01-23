@@ -12,3 +12,7 @@ INSERT INTO tb_user_role (user_id, role_id) VALUES (2, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 2);
 INSERT INTO tb_user_role (user_id, role_id) VALUES (3, 3);
+
+INSERT INTO tb_course (name, img_uri, img_Gray_uri) VALUES ('BootcampHTML', 'https://www.publicdomainpictures.net/pictures/390000/nahled/course-introduction.jpg', 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png');
+INSERT INTO tb_course (name, img_uri, img_Gray_uri) VALUES ('BootcampCSS', 'https://www.publicdomainpictures.net/pictures/390000/nahled/course-introduction.jpg', 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png');
+INSERT INTO tb_course (name, img_uri, img_Gray_uri) VALUES ('BootcampJS', 'https://www.publicdomainpictures.net/pictures/390000/nahled/course-introduction.jpg', 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png');

@@ -1,0 +1,94 @@
+package com.gustavonascimento.DsLearn.entities;
+
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.Objects;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Table(name = "tb_notification")
+@Entity
+public class Notification implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private String text;
+	private Instant moment;
+	private Boolean read;
+	private String route;
+
+	public Notification() {
+	}
+
+	public Notification(Long id, String text, Instant moment, String route) {
+		this.id = id;
+		this.text = text;
+		this.moment = moment;
+		this.read = false;
+		this.route = route;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Instant getMoment() {
+		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
+
+	public Boolean getRead() {
+		return read;
+	}
+
+	public void setRead(Boolean read) {
+		this.read = read;
+	}
+
+	public String getRoute() {
+		return route;
+	}
+
+	public void setRoute(String route) {
+		this.route = route;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, read);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Notification other = (Notification) obj;
+		return Objects.equals(id, other.id) && Objects.equals(read, other.read);
+	}
+}

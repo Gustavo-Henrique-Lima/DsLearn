@@ -20,3 +20,7 @@ INSERT INTO tb_course (name, img_uri, img_Gray_uri) VALUES ('BootcampJS', 'https
 INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('1.0', TIMESTAMP WITH TIME ZONE '2024-01-30T00:00:00Z', TIMESTAMP WITH TIME ZONE '2024-03-30T00:00:00Z', 1);
 INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('2.0', TIMESTAMP WITH TIME ZONE '2024-09-30T00:00:00Z', TIMESTAMP WITH TIME ZONE '2024-11-30T00:00:00Z', 1);
 INSERT INTO tb_offer (edition, start_Moment, end_Moment, course_id) VALUES ('1.0', TIMESTAMP WITH TIME ZONE '2024-01-30T00:00:00Z', TIMESTAMP WITH TIME ZONE '2024-03-30T00:00:00Z', 2);
+
+INSERT INTO tb_notification (text, moment, read, route) VALUES ('Olá mundo', TIMESTAMP WITH TIME ZONE '2024-01-30T00:00:00Z', false, 'www.google.com');
+INSERT INTO tb_notification (text, moment, read, route) VALUES ('Fala pessoal', TIMESTAMP WITH TIME ZONE '2024-01-30T00:00:00Z', false, 'www.youtube.com');
+INSERT INTO tb_notification (text, moment, read, route) VALUES ('Preciso de um emprego', TIMESTAMP WITH TIME ZONE '2024-01-30T00:00:00Z', false, 'www.meusite.com');

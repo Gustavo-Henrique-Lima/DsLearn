@@ -31,3 +31,12 @@ INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) 
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Lives', 'Lives do curso', 3, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 3, 1);
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Forum', 'Forum de apoio', 4, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 1, 2);
 INSERT INTO tb_resource (title, description, position, img_Uri, type, offer_id) VALUES ('Trilha CSS', 'Trilha principal do curso', 1, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 1, 2);
+
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 1', 'Neste capítulo vamos começar', 1, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 1, null);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 2', 'Neste capítulo vamos continuar', 2, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 1, 1);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Forum', 'Acesse o forum', 3, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 2, null);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 3', 'Neste capítulo vamos finalizar', 3, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 1, 2);
+INSERT INTO tb_section (title, description, position, img_Uri, resource_id, prerequisite_id) VALUES ('Capítulo 1', 'Neste capítulo vamos começar', 1, 'https://cdn-icons-png.flaticon.com/512/6681/6681144.png', 5, null);
+
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (1, 1,  TIMESTAMP WITH TIME ZONE '2024-01-30T13:00:00Z', null, true, false);
+INSERT INTO tb_enrollment (user_id, offer_id, enroll_Moment, refund_Moment, available, only_Update) VALUES (2, 2, TIMESTAMP WITH TIME ZONE '2024-01-30T13:00:00Z', null, true, false);

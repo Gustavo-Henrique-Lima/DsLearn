@@ -15,25 +15,29 @@ import com.gustavonascimento.DsLearn.repositories.UserRepository;
 import com.gustavonascimento.DsLearn.services.exceptions.ResourceNotFoundException;
 
 @Service
-public class UserService implements UserDetailsService{
+public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository repository;
 	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User entity = repository.findByEmail(username);
-		if(entity==null) {
-			throw new UsernameNotFoundException("Email não encontrado");
-		}
-		return entity;
-	}
-	
+	@Autowired
+	private AuthService authService;
+
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
+		authService.validateSelfOrAdmin(id);
 		Optional<User> obj = repository.findById(id);
 		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
 		return new UserDTO(entity);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User entity = repository.findByEmail(username);
+		if (entity == null) {
+			throw new UsernameNotFoundException("Email não encontrado");
+		}
+		return entity;
 	}
 
 }

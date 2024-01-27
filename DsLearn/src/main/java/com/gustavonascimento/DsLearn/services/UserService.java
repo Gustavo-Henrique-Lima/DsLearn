@@ -1,13 +1,18 @@
 package com.gustavonascimento.DsLearn.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.gustavonascimento.DsLearn.entities.User;
+import com.gustavonascimento.DsLearn.entities.dto.UserDTO;
 import com.gustavonascimento.DsLearn.repositories.UserRepository;
+import com.gustavonascimento.DsLearn.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService implements UserDetailsService{
@@ -23,4 +28,12 @@ public class UserService implements UserDetailsService{
 		}
 		return entity;
 	}
+	
+	@Transactional(readOnly = true)
+	public UserDTO findById(Long id) {
+		Optional<User> obj = repository.findById(id);
+		User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado"));
+		return new UserDTO(entity);
+	}
+
 }

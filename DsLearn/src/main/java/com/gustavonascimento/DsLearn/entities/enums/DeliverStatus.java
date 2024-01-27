@@ -2,7 +2,7 @@ package com.gustavonascimento.DsLearn.entities.enums;
 
 public enum DeliverStatus {
 
-	LESSON_ONLY(1), LESSON_TASK(2), FORUM(3), EXTERNAL_LINK(4);
+	PENDING(1), ACCEPTED(2), REJECTED(3);
 
 	private int code;
 

@@ -72,7 +72,7 @@ public class AuthorizationServerConfig {
 
 		OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 		
-		
+		http.userDetailsService(userDetailsService);
 
 		// @formatter:off
 		http.getConfigurer(OAuth2AuthorizationServerConfigurer.class)
@@ -111,6 +111,7 @@ public class AuthorizationServerConfig {
 			.scope("read")
 			.scope("write")
 			.authorizationGrantType(new AuthorizationGrantType("password"))
+			.authorizationGrantType(new AuthorizationGrantType("refresh_token"))
 			.tokenSettings(tokenSettings())
 			.clientSettings(clientSettings())
 			.build();
@@ -125,6 +126,7 @@ public class AuthorizationServerConfig {
 		return TokenSettings.builder()
 			.accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED)
 			.accessTokenTimeToLive(Duration.ofSeconds(jwtDurationSeconds))
+			.refreshTokenTimeToLive(Duration.ofSeconds(jwtDurationSeconds))
 			.build();
 		// @formatter:on
 	}

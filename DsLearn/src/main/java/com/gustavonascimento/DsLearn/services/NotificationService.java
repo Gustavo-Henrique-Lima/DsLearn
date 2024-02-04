@@ -16,14 +16,14 @@ public class NotificationService {
 
 	@Autowired
 	private NotificationRepository repository;
-	
+
 	@Autowired
 	private AuthService authService;
-	
+
 	@Transactional(readOnly = true)
-	public Page<NotificationDTO> notificationsForCurrentUser(Pageable pageable){
+	public Page<NotificationDTO> notificationsForCurrentUser(boolean unreadOnly, Pageable pageable) {
 		User user = authService.authenticated();
-		Page<Notification> page = repository.findByUser(user, pageable);
-		return page.map(notification->new NotificationDTO(notification));
+		Page<Notification> page = repository.find(user, unreadOnly, pageable);
+		return page.map(notification -> new NotificationDTO(notification));
 	}
 }
